@@ -8,9 +8,8 @@ def read_template(path):
     raise err
 
 def parse_template(text):
-  p = re.findall(r'\{\w+\}', text)
-  parts = [re.sub(r'[\{\}]','', e) for e in p]
-  stp = re.sub(r'\{\w+\}','{}', text)
+  parts = re.findall(r'(?<=\{).+?(?=\})', text)
+  stp = re.sub(r'\{.*?\}','{}', text)
   return stp, tuple(parts)
 
 def merge(stp, parts):
@@ -37,3 +36,4 @@ if __name__ == "__main__":
   story = merge(stp, w)
   print(story)
   print('\nCheers!')
+  
