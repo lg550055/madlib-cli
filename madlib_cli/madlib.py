@@ -8,8 +8,8 @@ def read_template(path):
     raise err
 
 def parse_template(text):
-  parts = re.findall(r'(?<=\{).+?(?=\})', text)
-  stripped = re.sub(r'\{.*?\}','{}', text)
+  parts = re.findall(r'{(.*?)}', text)
+  stripped = re.sub(r'{(.*?)}','{}', text)
   return stripped, tuple(parts)
 
 def merge(stripped, parts):
