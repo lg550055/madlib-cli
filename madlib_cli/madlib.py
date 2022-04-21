@@ -16,10 +16,24 @@ def parse_template(text):
 def merge(stp, parts):
   return stp.format(*parts)
 
+def intro():
+  print('''
+    Welcome!
+    This is a Madlib game
+    We'll aks you to provide a few nouns, verbs, adjectives..
+    Then we'll show you the story you created!
+    Enjoy!
+  ''')
 
-# @pytest.mark.skip("pending")
-# def test_read_template_raises_exception_with_bad_path():
-
-#     with pytest.raises(FileNotFoundError):
-#         path = "missing.txt"
-#         read_template(path)
+if __name__ == "__main__":
+  intro()
+  s = read_template('assets/vgame.txt')
+  stp, parts = parse_template(s)
+  print(parts)
+  w = []
+  for p in parts:
+    w.append(input(f'Please enter an {p}: '))
+  print('Here is the story you created\n')
+  story = merge(stp, w)
+  print(story)
+  print('\nCheers!')
