@@ -4,8 +4,10 @@ Lab 03 - Class 03
 ### Author: Polo Gonzalez
 
 ### Description
-Madlib game structure.
-3 distinct functions, each of which has individual responsibility.
+Madlib game.  Welcomes user.  Briefly explains game.  Asks for user input.  Displays story with user input words in it.
+
+*specifically for lab 03 minimal requirements:*
+3 distinct functions, each of which has individual responsibility:
 
 - **read_template** raises and exception if the path passed does not lead to a file, otherwise returns a string of the file's text
 - **parse_template** takes a string (for this game the one returned by read_template) and returns a string with language parts removed and a separate list of those language parts
@@ -13,7 +15,9 @@ Madlib game structure.
 
 ### Setup
 
-Python3 with Pytest
+To run program enter:
+
+python3 madlib_cli/madlib.py
 
 ##### Tests
 

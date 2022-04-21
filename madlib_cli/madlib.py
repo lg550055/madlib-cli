@@ -9,11 +9,11 @@ def read_template(path):
 
 def parse_template(text):
   parts = re.findall(r'(?<=\{).+?(?=\})', text)
-  stp = re.sub(r'\{.*?\}','{}', text)
-  return stp, tuple(parts)
+  stripped = re.sub(r'\{.*?\}','{}', text)
+  return stripped, tuple(parts)
 
-def merge(stp, parts):
-  return stp.format(*parts)
+def merge(stripped, parts):
+  return stripped.format(*parts)
 
 def intro():
   print('''
@@ -27,13 +27,11 @@ def intro():
 if __name__ == "__main__":
   intro()
   s = read_template('assets/vgame.txt')
-  stp, parts = parse_template(s)
-  print(parts)
-  w = []
+  stripped, parts = parse_template(s)
+  words = []
   for p in parts:
-    w.append(input(f'Please enter an {p}: '))
+    words.append(input(f'Please enter a {p}: '))
   print('Here is the story you created\n')
-  story = merge(stp, w)
+  story = merge(stripped, words)
   print(story)
   print('\nCheers!')
-  
